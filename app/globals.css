@@ -4,40 +4,40 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Gaming aesthetic colors - deep blacks with neon cyan and red accents */
-  --background: oklch(0.08 0 0);
-  --foreground: oklch(0.95 0 0);
-  --card: oklch(0.12 0 0);
+  /* Enhanced Gaming Theme - Matrix/Cyberpunk aesthetic with green neon */
+  --background: oklch(0.03 0 0); /* Deeper black */
+  --foreground: oklch(0.98 0 0); /* Pure white */
+  --card: oklch(0.08 0 0); /* Very dark cards */
   --card-foreground: oklch(0.95 0 0);
-  --popover: oklch(0.12 0 0);
+  --popover: oklch(0.08 0 0);
   --popover-foreground: oklch(0.95 0 0);
-  --primary: oklch(0.4 0.3 262);
-  --primary-foreground: oklch(0.95 0 0);
-  --secondary: oklch(0.5 0.25 29);
-  --secondary-foreground: oklch(0.95 0 0);
-  --muted: oklch(0.25 0 0);
-  --muted-foreground: oklch(0.65 0 0);
-  --accent: oklch(0.6 0.3 173);
-  --accent-foreground: oklch(0.08 0 0);
-  --destructive: oklch(0.6 0.25 29);
-  --destructive-foreground: oklch(0.95 0 0);
-  --border: oklch(0.2 0 0);
-  --input: oklch(0.15 0 0);
-  --ring: oklch(0.6 0.3 173);
-  --chart-1: oklch(0.6 0.3 173);
-  --chart-2: oklch(0.6 0.25 29);
-  --chart-3: oklch(0.5 0.2 262);
-  --chart-4: oklch(0.55 0.25 50);
-  --chart-5: oklch(0.4 0.3 290);
+  --primary: oklch(0.65 0.3 150); /* Bright green */
+  --primary-foreground: oklch(0.03 0 0);
+  --secondary: oklch(0.6 0.25 200); /* Cyan */
+  --secondary-foreground: oklch(0.03 0 0);
+  --muted: oklch(0.15 0 0);
+  --muted-foreground: oklch(0.6 0 0);
+  --accent: oklch(0.7 0.35 150); /* Neon green */
+  --accent-foreground: oklch(0.03 0 0);
+  --destructive: oklch(0.65 0.3 15); /* Bright red */
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(0.2 0.1 150); /* Subtle green tint */
+  --input: oklch(0.1 0 0);
+  --ring: oklch(0.7 0.35 150);
+  --chart-1: oklch(0.7 0.35 150); /* Green */
+  --chart-2: oklch(0.6 0.25 200); /* Cyan */
+  --chart-3: oklch(0.65 0.3 15); /* Red */
+  --chart-4: oklch(0.6 0.3 280); /* Purple */
+  --chart-5: oklch(0.65 0.25 50); /* Orange */
   --radius: 0.5rem;
-  --sidebar: oklch(0.1 0 0);
+  --sidebar: oklch(0.05 0 0);
   --sidebar-foreground: oklch(0.95 0 0);
-  --sidebar-primary: oklch(0.6 0.3 173);
-  --sidebar-primary-foreground: oklch(0.08 0 0);
-  --sidebar-accent: oklch(0.4 0.3 262);
+  --sidebar-primary: oklch(0.7 0.35 150);
+  --sidebar-primary-foreground: oklch(0.03 0 0);
+  --sidebar-accent: oklch(0.6 0.25 200);
   --sidebar-accent-foreground: oklch(0.95 0 0);
-  --sidebar-border: oklch(0.2 0 0);
-  --sidebar-ring: oklch(0.6 0.3 173);
+  --sidebar-border: oklch(0.2 0.1 150);
+  --sidebar-ring: oklch(0.7 0.35 150);
 }
 
 .dark {
@@ -125,35 +125,60 @@
   }
 }
 
-/* Gaming animations - glitch, pulse, neon glow effects */
+/* Enhanced Gaming animations - Matrix/Cyberpunk effects */
 @keyframes glitch {
-  0%,
-  100% {
-    transform: translate(0);
-  }
-  20% {
-    transform: translate(-2px, 2px);
-  }
-  40% {
-    transform: translate(-2px, -2px);
-  }
-  60% {
-    transform: translate(2px, 2px);
-  }
-  80% {
-    transform: translate(2px, -2px);
-  }
+  0%, 100% { transform: translate(0); }
+  10% { transform: translate(-2px, -1px); }
+  20% { transform: translate(2px, 1px); }
+  30% { transform: translate(-1px, 2px); }
+  40% { transform: translate(1px, -2px); }
+  50% { transform: translate(-2px, 1px); }
+  60% { transform: translate(2px, -1px); }
+  70% { transform: translate(-1px, -2px); }
+  80% { transform: translate(1px, 2px); }
+  90% { transform: translate(-2px, -1px); }
 }
 
 @keyframes neon-glow {
-  0%,
-  100% {
-    text-shadow: 0 0 10px rgba(96, 165, 250, 0.5), 0 0 20px rgba(96, 165, 250, 0.3);
-    box-shadow: 0 0 10px rgba(96, 165, 250, 0.5), inset 0 0 10px rgba(96, 165, 250, 0.1);
+  0%, 100% {
+    text-shadow: 
+      0 0 5px rgba(0, 255, 153, 0.8),
+      0 0 10px rgba(0, 255, 153, 0.6),
+      0 0 20px rgba(0, 255, 153, 0.4),
+      0 0 40px rgba(0, 255, 153, 0.2);
   }
   50% {
-    text-shadow: 0 0 20px rgba(96, 165, 250, 0.8), 0 0 40px rgba(96, 165, 250, 0.5);
-    box-shadow: 0 0 20px rgba(96, 165, 250, 0.8), inset 0 0 20px rgba(96, 165, 250, 0.2);
+    text-shadow: 
+      0 0 10px rgba(0, 255, 153, 1),
+      0 0 20px rgba(0, 255, 153, 0.8),
+      0 0 40px rgba(0, 255, 153, 0.6),
+      0 0 80px rgba(0, 255, 153, 0.4);
+  }
+}
+
+@keyframes matrix-rain {
+  0% { transform: translateY(-100vh); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(100vh); opacity: 0; }
+}
+
+@keyframes scanner-line {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100vw); }
+}
+
+@keyframes cyber-pulse {
+  0%, 100% {
+    box-shadow: 
+      0 0 5px rgba(0, 255, 153, 0.5),
+      inset 0 0 10px rgba(0, 255, 153, 0.1);
+  }
+  50% {
+    box-shadow: 
+      0 0 20px rgba(0, 255, 153, 0.8),
+      0 0 40px rgba(0, 255, 153, 0.4),
+      inset 0 0 20px rgba(0, 255, 153, 0.2);
   }
 }
 

@@ -4,121 +4,200 @@ import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card } from "@/components/ui/card"
-import { ChevronLeft, LogIn } from "lucide-react"
+import { ChevronLeft, LogIn, Shield, Users, Target } from "lucide-react"
 
 export default function LoginPortal({ onBack }: { onBack: () => void }) {
-  const [userType, setUserType] = useState<"citizen" | "employee" | "office" | null>(null)
+  const [userType, setUserType] = useState<"citizen" | "employee" | "office" | "environmental" | null>(null)
   const [credentials, setCredentials] = useState({ email: "", password: "" })
 
   const handleLogin = (type: string) => {
     // Redirect to respective dashboard
-    window.location.href = `/${type}-dashboard`
+    if (type === "environmental") {
+      window.location.href = "/environmental"
+    } else {
+      window.location.href = `/${type}-dashboard`
+    }
   }
 
   if (!userType) {
     return (
-      <div className="w-full min-h-screen bg-gradient-to-br from-background via-background to-card/50 flex items-center justify-center p-4">
-        <div className="max-w-2xl w-full">
-          <button
-            onClick={onBack}
-            className="mb-8 flex items-center gap-2 text-foreground/70 hover:text-foreground transition-colors"
-          >
-            <ChevronLeft className="w-5 h-5" />
-            Back to Home
-          </button>
+      <div className="w-full min-h-screen bg-black overflow-hidden relative">
+        {/* Background Effects */}
+        <div className="fixed inset-0 opacity-10">
+          <div className="w-full h-full" style={{
+            backgroundImage: `
+              linear-gradient(rgba(0,255,153,0.1) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(0,255,153,0.1) 1px, transparent 1px)
+            `,
+            backgroundSize: '50px 50px'
+          }} />
+        </div>
 
-          <Card className="p-12 border-accent/30 bg-card/80 backdrop-blur neon-glow">
-            <h2 className="text-4xl font-bold text-center mb-12 text-foreground">Choose Your Role</h2>
+        <div className="flex items-center justify-center min-h-screen p-4 relative z-10">
+          <div className="max-w-4xl w-full">
+            <button
+              onClick={onBack}
+              className="mb-8 flex items-center gap-2 text-green-400 hover:text-green-300 transition-colors font-mono"
+            >
+              <ChevronLeft className="w-5 h-5" />
+              BACK_TO_MAIN
+            </button>
 
-            <div className="grid md:grid-cols-3 gap-6">
-              {[
-                {
-                  id: "citizen",
-                  title: "Citizen",
-                  description: "Report issues & earn rewards",
-                  icon: "👥",
-                  color: "from-accent",
-                },
-                {
-                  id: "employee",
-                  title: "Employee",
-                  description: "Manage tasks & compete",
-                  icon: "⚙️",
-                  color: "from-secondary",
-                },
-                {
-                  id: "office",
-                  title: "Office Manager",
-                  description: "Lead municipal operations",
-                  icon: "🏢",
-                  color: "from-primary",
-                },
-              ].map((role) => (
-                <button
-                  key={role.id}
-                  onClick={() => setUserType(role.id as any)}
-                  className={`p-6 rounded-lg border-2 transition-all duration-300 hover:shadow-lg ${
-                    role.color === "from-accent"
-                      ? "border-accent/50 bg-accent/10 hover:border-accent hover:shadow-accent/20"
-                      : role.color === "from-secondary"
-                        ? "border-secondary/50 bg-secondary/10 hover:border-secondary hover:shadow-secondary/20"
-                        : "border-primary/50 bg-primary/10 hover:border-primary hover:shadow-primary/20"
-                  }`}
-                >
-                  <div className="text-4xl mb-3">{role.icon}</div>
-                  <h3 className="font-bold text-lg text-foreground mb-1">{role.title}</h3>
-                  <p className="text-sm text-foreground/60">{role.description}</p>
-                </button>
-              ))}
-            </div>
-          </Card>
+            <Card className="p-12 border-green-500/30 bg-gray-900/80 backdrop-blur-sm">
+              <div className="text-center mb-12">
+                <h2 className="text-5xl font-black mb-4 text-green-400 tracking-wider neon-glow">
+                  SELECT OPERATIVE CLASS
+                </h2>
+                <p className="text-gray-400 font-mono">Choose your mission profile to access the network</p>
+              </div>
+
+              <div className="grid md:grid-cols-4 gap-6">
+                {[
+                  {
+                    id: "citizen",
+                    title: "CITIZEN OPERATIVE",
+                    description: "Field reconnaissance & evidence collection",
+                    icon: Users,
+                    color: "border-green-500/50 hover:border-green-400",
+                    bg: "bg-green-500/10 hover:bg-green-500/20",
+                    glow: "hover:shadow-green-400/20"
+                  },
+                  {
+                    id: "employee",
+                    title: "FIELD AGENT",
+                    description: "Mission execution & tactical operations",
+                    icon: Target,
+                    color: "border-blue-500/50 hover:border-blue-400",
+                    bg: "bg-blue-500/10 hover:bg-blue-500/20",
+                    glow: "hover:shadow-blue-400/20"
+                  },
+                  {
+                    id: "office",
+                    title: "COMMAND CENTER",
+                    description: "Strategic oversight & zone management",
+                    icon: Shield,
+                    color: "border-purple-500/50 hover:border-purple-400",
+                    bg: "bg-purple-500/10 hover:bg-purple-500/20",
+                    glow: "hover:shadow-purple-400/20"
+                  },
+                  {
+                    id: "environmental",
+                    title: "SENSOR NETWORK",
+                    description: "Real-time environmental monitoring",
+                    icon: () => (
+                      <div className="w-8 h-8 flex items-center justify-center text-cyan-400 font-black text-lg">
+                        ⚡
+                      </div>
+                    ),
+                    color: "border-cyan-500/50 hover:border-cyan-400",
+                    bg: "bg-cyan-500/10 hover:bg-cyan-500/20",
+                    glow: "hover:shadow-cyan-400/20"
+                  }
+                ].map((role) => {
+                  const Icon = role.icon
+                  return (
+                    <button
+                      key={role.id}
+                      onClick={() => setUserType(role.id as any)}
+                      className={`p-8 rounded-lg border-2 transition-all duration-300 ${role.color} ${role.bg} hover:shadow-lg ${role.glow} group`}
+                    >
+                      <div className="mb-6">
+                        {typeof Icon === 'function' ? (
+                          <Icon />
+                        ) : (
+                          <Icon className="w-8 h-8 text-green-400 group-hover:animate-pulse" />
+                        )}
+                      </div>
+                      <h3 className="font-black text-lg text-white mb-2 tracking-wide">{role.title}</h3>
+                      <p className="text-sm text-gray-400 font-mono leading-relaxed">{role.description}</p>
+                      
+                      {/* Access Level Indicator */}
+                      <div className="mt-4 text-xs font-mono text-gray-500 flex items-center justify-center gap-1">
+                        <div className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse"></div>
+                        ACCESS_GRANTED
+                      </div>
+                    </button>
+                  )
+                })}
+              </div>
+            </Card>
+          </div>
         </div>
       </div>
     )
   }
 
   return (
-    <div className="w-full min-h-screen bg-gradient-to-br from-background via-background to-card/50 flex items-center justify-center p-4">
-      <div className="max-w-md w-full">
+    <div className="w-full min-h-screen bg-black flex items-center justify-center p-4 relative overflow-hidden">
+      {/* Background grid */}
+      <div className="fixed inset-0 opacity-5">
+        <div className="w-full h-full" style={{
+          backgroundImage: `
+            linear-gradient(rgba(0,255,153,0.1) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(0,255,153,0.1) 1px, transparent 1px)
+          `,
+          backgroundSize: '30px 30px'
+        }} />
+      </div>
+
+      <div className="max-w-md w-full relative z-10">
         <button
           onClick={() => setUserType(null)}
-          className="mb-8 flex items-center gap-2 text-foreground/70 hover:text-foreground transition-colors"
+          className="mb-8 flex items-center gap-2 text-green-400 hover:text-green-300 transition-colors font-mono"
         >
           <ChevronLeft className="w-5 h-5" />
-          Back
+          CHANGE_CLASS
         </button>
 
-        <Card className="p-8 border-accent/30 bg-card/80 backdrop-blur neon-glow fade-in-scale">
-          <h2 className="text-3xl font-bold text-center mb-8 text-foreground capitalize">{userType} Login</h2>
+        <Card className="p-8 border-green-500/30 bg-gray-900/90 backdrop-blur-sm fade-in-scale">
+          <div className="text-center mb-8">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-green-400 rounded-full mb-4">
+              <Shield className="w-8 h-8 text-black" />
+            </div>
+            <h2 className="text-3xl font-black text-green-400 mb-2 tracking-wider">
+              {userType === "environmental" ? "SENSOR_ACCESS" : `${userType?.toUpperCase()}_LOGIN`}
+            </h2>
+            <p className="text-gray-400 font-mono text-sm">Enter authentication credentials</p>
+          </div>
 
           <div className="space-y-4 mb-6">
-            <Input
-              type="email"
-              placeholder="Email"
-              value={credentials.email}
-              onChange={(e) => setCredentials({ ...credentials, email: e.target.value })}
-              className="bg-input border-border/50 text-foreground placeholder:text-foreground/40"
-            />
-            <Input
-              type="password"
-              placeholder="Password"
-              value={credentials.password}
-              onChange={(e) => setCredentials({ ...credentials, password: e.target.value })}
-              className="bg-input border-border/50 text-foreground placeholder:text-foreground/40"
-            />
+            <div>
+              <label className="block text-xs font-mono text-gray-400 mb-2">OPERATIVE_ID</label>
+              <Input
+                type="email"
+                placeholder="operative@cityguardian.net"
+                value={credentials.email}
+                onChange={(e) => setCredentials({ ...credentials, email: e.target.value })}
+                className="bg-gray-800 border-gray-600 text-green-400 placeholder:text-gray-500 font-mono focus:border-green-400"
+              />
+            </div>
+            <div>
+              <label className="block text-xs font-mono text-gray-400 mb-2">ACCESS_CODE</label>
+              <Input
+                type="password"
+                placeholder="••••••••••••••••"
+                value={credentials.password}
+                onChange={(e) => setCredentials({ ...credentials, password: e.target.value })}
+                className="bg-gray-800 border-gray-600 text-green-400 placeholder:text-gray-500 font-mono focus:border-green-400"
+              />
+            </div>
           </div>
 
           <Button
             onClick={() => handleLogin(userType)}
-            className="w-full bg-gradient-to-r from-accent to-secondary text-foreground font-bold h-12 neon-glow"
+            className="w-full bg-gradient-to-r from-green-400 to-cyan-400 text-black font-black h-12 hover:from-green-300 hover:to-cyan-300 shadow-lg shadow-green-400/25 font-mono tracking-wide"
           >
             <LogIn className="w-5 h-5 mr-2" />
-            Enter Dashboard
+            INITIALIZE_SESSION
           </Button>
 
-          <p className="text-center text-foreground/60 text-sm mt-4">
-            Demo credentials: any email@test.com / password123
-          </p>
+          <div className="mt-6 p-4 bg-gray-800/50 rounded border border-gray-700">
+            <p className="text-center text-gray-400 text-xs font-mono mb-2">DEMO_CREDENTIALS</p>
+            <div className="text-center text-green-400 text-xs font-mono">
+              ID: demo@cityguardian.net<br/>
+              CODE: guardian2025
+            </div>
+          </div>
         </Card>
       </div>
     </div>
