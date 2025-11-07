@@ -1,0 +1,57 @@
+{
+  "name": "City Guardian - Environmental Defense Network",
+  "short_name": "CityGuardian",
+  "description": "Gaming-themed environmental monitoring platform with real-time sensor data and mission control interface",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#00ff99",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en",
+  "categories": ["utilities", "productivity", "lifestyle"],
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "32x32",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/logo.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Environmental Dashboard",
+      "short_name": "Sensors",
+      "description": "Real-time environmental sensor monitoring",
+      "url": "/environmental",
+      "icons": [{ "src": "/favicon.svg", "sizes": "32x32" }]
+    },
+    {
+      "name": "Citizen Portal",
+      "short_name": "Citizen",
+      "description": "Citizen operative mission interface",
+      "url": "/citizen",
+      "icons": [{ "src": "/favicon.svg", "sizes": "32x32" }]
+    },
+    {
+      "name": "Employee Dashboard",
+      "short_name": "Agent",
+      "description": "Field agent tactical operations",
+      "url": "/employee",
+      "icons": [{ "src": "/favicon.svg", "sizes": "32x32" }]
+    },
+    {
+      "name": "Command Center",
+      "short_name": "Control",
+      "description": "Management command center",
+      "url": "/control",
+      "icons": [{ "src": "/favicon.svg", "sizes": "32x32" }]
+    }
+  ]
+}

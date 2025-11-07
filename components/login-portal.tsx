@@ -14,8 +14,10 @@ export default function LoginPortal({ onBack }: { onBack: () => void }) {
     // Redirect to respective dashboard
     if (type === "environmental") {
       window.location.href = "/environmental"
+    } else if (type === "office") {
+      window.location.href = "/control"
     } else {
-      window.location.href = `/${type}-dashboard`
+      window.location.href = `/${type}`
     }
   }
 

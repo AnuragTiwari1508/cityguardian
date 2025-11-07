@@ -1,0 +1,86 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="bgGradient" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#001122" />
+      <stop offset="100%" stop-color="#000000" />
+    </radialGradient>
+    <linearGradient id="shieldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00ff99" />
+      <stop offset="50%" stop-color="#00cc77" />
+      <stop offset="100%" stop-color="#009955" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="512" height="512" rx="64" fill="url(#bgGradient)" />
+  
+  <!-- Grid Pattern -->
+  <defs>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M 32 0 L 0 0 0 32" fill="none" stroke="#00ff99" stroke-width="0.5" opacity="0.3"/>
+    </pattern>
+  </defs>
+  <rect width="512" height="512" fill="url(#grid)" />
+  
+  <!-- Main Shield -->
+  <path d="M256 48 L320 80 L384 128 L384 256 C384 320 352 368 256 400 C160 368 128 320 128 256 L128 128 L192 80 Z" 
+        fill="url(#shieldGradient)" 
+        filter="url(#glow)"
+        stroke="#00ff99" 
+        stroke-width="2"/>
+  
+  <!-- Inner Circuit Pattern -->
+  <g stroke="#001122" stroke-width="2" fill="none" opacity="0.6">
+    <circle cx="256" cy="180" r="20"/>
+    <circle cx="220" cy="220" r="12"/>
+    <circle cx="292" cy="220" r="12"/>
+    <circle cx="256" cy="280" r="16"/>
+    
+    <!-- Connection Lines -->
+    <line x1="256" y1="200" x2="230" y2="210"/>
+    <line x1="256" y1="200" x2="282" y2="210"/>
+    <line x1="230" y1="232" x2="246" y2="268"/>
+    <line x1="282" y1="232" x2="266" y2="268"/>
+  </g>
+  
+  <!-- Lightning Bolt -->
+  <path d="M245 150 L270 150 L255 190 L275 190 L250 230 L225 200 L245 200 Z" 
+        fill="#ffffff" 
+        filter="url(#glow)"/>
+  
+  <!-- Environmental Symbols -->
+  <g fill="#ffffff" opacity="0.8">
+    <!-- Air Quality Indicator -->
+    <circle cx="200" cy="300" r="8" fill="#00ff99"/>
+    <circle cx="212" cy="300" r="6" fill="#00cc77"/>
+    <circle cx="222" cy="300" r="4" fill="#009955"/>
+    
+    <!-- Temperature -->
+    <rect x="290" y="290" width="4" height="20" rx="2" fill="#00ff99"/>
+    <circle cx="292" cy="312" r="6" fill="#00ff99"/>
+    
+    <!-- CO2 Molecule -->
+    <circle cx="180" cy="340" r="4" fill="#ff6b6b"/>
+    <circle cx="170" cy="340" r="3" fill="#4ecdc4"/>
+    <circle cx="190" cy="340" r="3" fill="#4ecdc4"/>
+  </g>
+  
+  <!-- Text Elements -->
+  <text x="256" y="380" text-anchor="middle" fill="#00ff99" font-family="monospace" font-size="24" font-weight="bold">CITY</text>
+  <text x="256" y="405" text-anchor="middle" fill="#00cc77" font-family="monospace" font-size="20" font-weight="bold">GUARDIAN</text>
+  
+  <!-- Corner Accents -->
+  <g stroke="#00ff99" stroke-width="2" fill="none" opacity="0.6">
+    <path d="M48 48 L48 80 M48 48 L80 48"/>
+    <path d="M464 48 L464 80 M464 48 L432 48"/>
+    <path d="M48 464 L48 432 M48 464 L80 464"/>
+    <path d="M464 464 L464 432 M464 464 L432 464"/>
+  </g>
+</svg>

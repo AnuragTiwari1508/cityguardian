@@ -8,26 +8,66 @@ const _geist = Geist({ subsets: ["latin"] })
 const _geistMono = Geist_Mono({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "City Guardian - Municipal Management Platform",
-  description: "Real-time urban governance through gamified citizen engagement and IoT monitoring",
-  generator: "v0.app",
+  title: "🎮 CITY GUARDIAN - Environmental Defense Network",
+  description: "Gaming-themed environmental monitoring platform. Real-time sensor data, mission control interface, and gamified citizen engagement for urban environmental protection.",
+  keywords: ["environmental monitoring", "gaming interface", "smart city", "IoT sensors", "citizen engagement", "mission control"],
+  authors: [{ name: "City Guardian Team" }],
+  creator: "City Guardian",
+  publisher: "City Guardian",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  metadataBase: new URL('https://cityguardian-frontend.vercel.app'),
+  alternates: {
+    canonical: '/',
+  },
+  openGraph: {
+    title: '🎮 CITY GUARDIAN - Environmental Defense Network',
+    description: 'Gaming-themed environmental monitoring platform with real-time sensor data and mission control interface.',
+    url: 'https://cityguardian-frontend.vercel.app',
+    siteName: 'City Guardian',
+    images: [
+      {
+        url: '/logo.svg',
+        width: 512,
+        height: 512,
+        alt: 'City Guardian Logo - Environmental Defense Shield',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: '🎮 CITY GUARDIAN - Environmental Defense Network',
+    description: 'Gaming-themed environmental monitoring platform with real-time sensor data.',
+    images: ['/logo.svg'],
+    creator: '@cityguardian',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
   icons: {
     icon: [
       {
-        url: "/icon-light-32x32.png",
-        media: "(prefers-color-scheme: light)",
-      },
-      {
-        url: "/icon-dark-32x32.png",
-        media: "(prefers-color-scheme: dark)",
-      },
-      {
-        url: "/icon.svg",
+        url: "/favicon.svg",
         type: "image/svg+xml",
       },
     ],
-    apple: "/apple-icon.png",
+    shortcut: "/favicon.svg",
+    apple: "/logo.svg",
   },
+  manifest: '/manifest.json',
 }
 
 export default function RootLayout({

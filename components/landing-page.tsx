@@ -205,7 +205,7 @@ export default function LandingPage({ onGetStarted }: { onGetStarted: () => void
               className="border-green-400/50 text-green-400 hover:bg-green-400/10 font-black text-xl h-16 px-8 bg-transparent border-2"
             >
               <Activity className="w-6 h-6 mr-3" />
-              SENSOR DEMO
+              SENSOR NETWORK
             </Button>
           </div>
 
